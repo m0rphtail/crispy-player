@@ -47,5 +47,8 @@
     "electron-is-dev": "^2.0.0",
     "electron-packager": "^15.4.0",
     "wait-on": "^6.0.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }
