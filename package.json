@@ -1,5 +1,5 @@
 {
-  "name": "crispy-player-new",
+  "name": "crispy-player",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
@@ -18,7 +18,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
-    "electron": "wait-on tcp:3000 && electron ."
+    "electron": "wait-on tcp:3000 && electron .",
+    "build-app": "electron-packager ./ crispy-player --platform=linux --arch=x64 --out=build/ --overwrite && electron-packager ./ crispy-player --platform=win32 --arch=x64 --out=build/ --overwrite",
+    "build-lin": "electron-packager ./ crispy-player --platform=linux --arch=x64 --out=build/ --overwrite",
+    "build-win": "electron-packager ./ crispy-player --platform=win32 --arch=x64 --out=build/ --overwrite"
   },
   "eslintConfig": {
     "extends": [
