@@ -1,6 +1,6 @@
 # Crispy Player
 
-A video player that performs video super resolution in *realtime* made with ReactJs & ElectronJS
+A video player that performs video super resolution in _realtime_ made with [React](https://reactjs.org/) & [ElectronJS](https://www.electronjs.org/) along with Typescript for type support.
 
 ## Team
 
@@ -9,13 +9,28 @@ A video player that performs video super resolution in *realtime* made with Reac
 - [Mahesh Nahak](https://github.com/maheshn22)
 - [Yatish Kelkar](https://github.com/yatish1606)
 
+## Branch
+
+`main` for final bug-free code
+`dev` for integration and testing
+`name-dev` for individual branches
+
 ## Available Scripts
 
 Install dependencies
-### `yarn install`
+
+```
+yarn install
+```
 
 Run in the browser:
-### `yarn start`  
+
+```yarn start
+
+```
 
 Run with Electron:
-### `yarn dev`
+
+```
+yarn dev
+```
