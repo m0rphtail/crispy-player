@@ -34,7 +34,8 @@
     "electron": "wait-on tcp:3000 && electron .",
     "build-app": "electron-packager ./ crispy-player --platform=linux --arch=x64 --out=release/ --overwrite && electron-packager ./ crispy-player --platform=win32 --arch=x64 --out=release/ --overwrite",
     "build-lin": "electron-packager ./ crispy-player --platform=linux --arch=x64 --out=release/ --overwrite",
-    "build-win": "electron-packager ./ crispy-player --platform=win32 --arch=x64 --out=release/ --overwrite"
+    "build-win": "electron-packager ./ crispy-player --platform=win32 --arch=x64 --out=release/ --overwrite",
+    "start-win": "react-scripts start && wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
     "extends": [
