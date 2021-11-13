@@ -35,3 +35,15 @@ Run with Electron:
 ```
 npm run electron
 ```
+
+# Docker
+
+Build docker image
+```
+docker build -t crispy-player docker
+```
+
+Run docker image
+```
+docker run -it -v $(pwd):/shared crispy-player
+```
