@@ -45,5 +45,5 @@ docker build -t crispy-player docker
 
 Run docker image
 ```
-docker run -it -v $(pwd):/shared crispy-player
+docker run crispy-player --help
 ```
