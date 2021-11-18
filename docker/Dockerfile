@@ -1,6 +1,19 @@
-FROM ubuntu
+FROM archlinux
 
-ENV TZ=Asia/Kolkata
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN pacman -Syyu --noconfirm && pacman -S rustup mpv wget unzip git base-devel --noconfirm
+RUN rustup default stable
 
-RUN apt update && apt upgrade -y && apt install mpv -y
+
+# Precompiled binary
+# ------------------------------------------
+# RUN mkdir /crispy-player
+# WORKDIR /crispy-player
+# ENTRYPOINT [ "/crispy-player/anime4k" ]
+
+
+# compile on docker
+# ------------------------------------------
+COPY code /crispy-player
+WORKDIR /crispy-player
+RUN cargo build --release
+ENTRYPOINT [ "/crispy-player/target/release/crispy-player" ]
