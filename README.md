@@ -1,6 +1,6 @@
 # Crispy Player
 
-A video player that performs video super resolution in _realtime_ made with [React](https://reactjs.org/) & [Electron](https://www.electronjs.org/) along with Typescript for type support.
+A video player that performs video super resolution in _realtime_.
 
 ## Team
 
@@ -9,41 +9,16 @@ A video player that performs video super resolution in _realtime_ made with [Rea
 - [Mahesh Nahak](https://github.com/maheshn22)
 - [Yatish Kelkar](https://github.com/yatish1606)
 
+## Directories
+- [assets](https://github.com/m0rphtail/crispy-player/tree/main/assets) includes videos and images for testing
+- [core](https://github.com/m0rphtail/crispy-player/tree/main/core) includes main application code
+- [design](https://github.com/m0rphtail/crispy-player/tree/main/design) includes the system architecture and logic design
+- [frontend](https://github.com/m0rphtail/crispy-player/tree/main/frontend) includes code for GUI
+- [model](https://github.com/m0rphtail/crispy-player/tree/main/model) includes ML model(_s_) for shader generation
+
 ## Branch
 
-`main` for final bug-free code <br>
-`dev` for integration and testing <br>
-`name-dev` for individual branches <br>
+- `main` for final bug-free code
+- `dev` for integration and testing
+- `name-dev` for individual branches
 
-## Available Scripts
-
-Install dependencies
-
-```
-npm install
-```
-
-Run in the browser:
-
-```
-npm start
-
-```
-
-Run with Electron:
-
-```
-npm run electron
-```
-
-# Docker
-
-Build docker image
-```
-docker build -t crispy-player docker
-```
-
-Run docker image
-```
-docker run crispy-player --help
-```
