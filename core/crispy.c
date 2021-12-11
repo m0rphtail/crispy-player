@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include </usr/include/mpv/client.h>
+#include "lib/client.h"
 
 static inline void check_error(int status)
 {
