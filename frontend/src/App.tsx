@@ -1,11 +1,15 @@
 import "./App.css";
 import Button from "@atlaskit/button";
 import Avatar from "@atlaskit/avatar";
+import Header from "./components/Header/Header";
+import Separator from "./components/Separator/Separator";
+import VideoView from "./components/VideoView/VideoView";
+import VideoSelect from "./components/VideoSelect/VideoSelect";
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
-      <p>
+      {/* <p>
         Be aware of the difference between default and named exports. It is a
         common source of mistakes. We suggest that you stick to using default
         imports and exports when a module only exports a single thing (for
@@ -39,6 +43,12 @@ const App = (): JSX.Element => {
           <h5>John Doe</h5>
           <small>johndoe@gmail.com</small>
         </span>
+      </div> */}
+      <Header />
+      <div className="flex-start main">
+        <VideoSelect />
+        <Separator />
+        <VideoView />
       </div>
     </div>
   );
