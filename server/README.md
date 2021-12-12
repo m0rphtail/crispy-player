@@ -1,14 +1,14 @@
-First start mongo with : sudo systemctl start mongod
+1. First start mongo with : `sudo systemctl start mongod`<br>
+2. create a .env file with : `echo "DB = \"mongodb://localhost/image-upload\""`<br>
+3. start server with : `node index.js`
 
-start server with : node index.js
 
-create a .env file with : echo "DB = \"mongodb://localhost/image-upload\""
+POST file<br>
+URL : localhost:8080/file/upload?file<br>
+form-data : "file" as key and video file as value<br>
+returns   : a link to the file eg(http://localhost:8080/file/gg.mp4)<br>
 
-POST file
-URL : localhost:8080/file/upload?file
-form-data : "file" as key and video file as value
-returns   : a link to the file eg(http://localhost:8080/file/gg.mp4)
 
-GET file
-URL : http://localhost:8080/file/gg.mp4
-returns : video 
+GET file<br>
+URL : http://localhost:8080/file/gg.mp4<br>
+returns : video <br>
