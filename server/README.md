@@ -1,5 +1,8 @@
 First start mongo with : sudo systemctl start mongod
+
 start server with : node index.js
+
+create a .env file with : echo "DB = \"mongodb://localhost/image-upload\""
 
 POST file
 URL : localhost:8080/file/upload?file
