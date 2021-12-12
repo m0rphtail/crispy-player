@@ -10,6 +10,7 @@ import uploadRed from '../../assets/upload-red.png'
 import uploadGrey from '../../assets/upload-grey.png'
 
 import { formatBytes, useDidUpdateEffect } from '../../helpers'
+import uploadVideo from '../../helpers/uploadVideo'
 
 interface VideoSelectProps {
     setVideoPath: Dispatch<SetStateAction<string | null>>
@@ -74,6 +75,7 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
     useDidUpdateEffect(() => {
         if (selectedFile) {
             console.log(selectedFile)
+            uploadVideo(selectedFile)
             setVideoPath(selectedFile.webkitRelativePath)
             setIsError(false)
         } else {
