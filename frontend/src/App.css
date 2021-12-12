@@ -65,7 +65,7 @@ p {
 }
 
 small {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: normal;
 }
@@ -108,4 +108,12 @@ small {
 
 button span {
   font-size: 13px;
+}
+
+.grey {
+  color: grey;
+}
+
+.darkgrey {
+  color: #434a57;
 }

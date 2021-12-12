@@ -19,3 +19,25 @@
     flex-direction: column;
     align-items: center;
 }
+
+.dashed-box-error {
+    color: #f17777;
+    border-color: #f17777;
+    background-color: #f177772a;
+}
+.dashed-box-error *:not(button span) {
+    color: #f15656;
+    border-color: #f17777;
+}
+
+.video-info {
+    flex-direction: row;
+}
+
+.video-info .video-info-dot {
+    width: 4px;
+    height: 4px;
+    border-radius:50%;
+    background-color: grey;
+    margin: auto 9px;
+}
