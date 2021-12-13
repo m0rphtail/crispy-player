@@ -86,7 +86,7 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
             convertVideo(selectedFile)
                 .then((convertedBlob: any) => {
                     setTimeout(() => {
-                        uploadVideo(convertedBlob.data)
+                        uploadVideo(selectedFile)
                             .then((res: any) => {
                                 console.log('video uploaded', res)
                                 setUploadMessage('Uploaded successfully')
