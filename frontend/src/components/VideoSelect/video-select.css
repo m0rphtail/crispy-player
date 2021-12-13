@@ -26,12 +26,12 @@
     background-color: #f177772a;
 }
 .dashed-box-error *:not(button span) {
-    color: #f15656;
+    color: #e02b2b;
     border-color: #f17777;
 }
 
 .video-info {
-    flex-direction: row;
+    /* flex-direction: row; */
 }
 
 .video-info .video-info-dot {
