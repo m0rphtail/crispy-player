@@ -1,9 +1,10 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useCallback, useMemo, useRef, useState } from 'react'
+import React, { ChangeEvent, Dispatch, Fragment, SetStateAction, useCallback, useMemo, useRef, useState } from 'react'
 
 import './video-select.css'
 
 import { useDropzone } from 'react-dropzone'
 import Button from '@atlaskit/button'
+import ProgressBar from '@atlaskit/progress-bar'
 
 import upload from '../../assets/upload.png'
 import uploadRed from '../../assets/upload-red.png'
@@ -11,6 +12,7 @@ import uploadGrey from '../../assets/upload-grey.png'
 
 import { formatBytes, useDidUpdateEffect } from '../../helpers'
 import uploadVideo from '../../helpers/uploadVideo'
+import convertVideo from '../../helpers/convertVideo'
 
 interface VideoSelectProps {
     setVideoPath: Dispatch<SetStateAction<string | null>>
@@ -23,6 +25,8 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
      */
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
     const [isError, setIsError] = useState<boolean>(false)
+    const [isUploading, setIsUploading] = useState<boolean>(true)
+    const [uploadMessage, setUploadMessage] = useState<string>('')
 
     /**
      * checks the files entered into the dropzone and takes the first file
@@ -39,7 +43,7 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
         isDragActive,
         isDragAccept,
         isDragReject
-    } = useDropzone({ onDrop, accept: 'video/mp4' })
+    } = useDropzone({ onDrop, accept: 'video/*' })
 
     const style = useMemo(() => ({
         ...baseStyle,
@@ -75,9 +79,31 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
     useDidUpdateEffect(() => {
         if (selectedFile) {
             console.log(selectedFile)
-            uploadVideo(selectedFile)
+
+            setIsUploading(true)
+
+            setUploadMessage('Uploading video...')
+            convertVideo(selectedFile)
+                .then((convertedBlob: any) => {
+                    setTimeout(() => {
+                        uploadVideo(convertedBlob.data)
+                            .then((res: any) => {
+                                console.log('video uploaded', res)
+                                setUploadMessage('Uploaded successfully')
+                            })
+                            .catch(() => {
+                                setUploadMessage('Could not upload')
+                                setIsError(true)
+                            })
+                            .finally(() => {
+                                setIsUploading(false)
+                            })
+                    }, 2000)
+                })
+
             setVideoPath(selectedFile.webkitRelativePath)
             setIsError(false)
+
         } else {
             setIsError(true)
         }
@@ -92,26 +118,38 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
         setIsError(false)
     }
 
-    console.log(isError)
 
     return (
         <div className="video-select-container">
             {selectedFile ?
-                <div className="dashed-box video-info flex-sb">
-                    <span className="flex">
-                        <img src={uploadGrey} alt="upload" width="30" />
-                        &nbsp;&nbsp;&nbsp;
-                        <div>
-                            <p className="darkgrey">{selectedFile.name}</p>
-                            <span className="flex">
-                                <small className="grey">{formatBytes(selectedFile.size)}</small>
-                                <div className="video-info-dot"></div>
-                                <small className="grey">{selectedFile.type}</small>
-                            </span>
+                <div className={isError ? "dashed-box dashed-box-error video-info flex-col" : "dashed-box video-info flex-col"}>
+                    {isUploading || uploadMessage !== '' ?
+                        <Fragment>
+                            <small className="grey" style={{ textAlign: 'left', width: '100%' }}>{uploadMessage}</small>
+                            <div className="sm-br"></div>
+                            <ProgressBar isIndeterminate={isUploading} />
+                            <br />
+                            <br />
+                        </Fragment>
+                        : null
+                    }
+                    <span className="flex" style={{ width: '100%' }}>
+                        <span className="flex" style={{ width: '100%' }}>
+                            <img src={isError ? uploadRed : uploadGrey} alt="upload" width="30" />
+                            &nbsp;&nbsp;&nbsp;
+                            <div>
+                                <p className="darkgrey">{selectedFile.name}</p>
+                                <span className="flex">
+                                    <small className="grey">{formatBytes(selectedFile.size)}</small>
+                                    <div className="video-info-dot"></div>
+                                    <small className="grey">{selectedFile.type}</small>
+                                </span>
 
-                        </div>
+                            </div>
+                        </span>
+                        <Button onClick={changeFile} appearance={isError ? "danger" : "default"}>Change</Button>
                     </span>
-                    <Button onClick={changeFile}>Change Video</Button>
+
                 </div>
                 :
                 <div className={isError ? "dashed-box dashed-box-error" : "dashed-box"}>

@@ -3,7 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/upload", upload.single("file"), async (req, res) => {
-    if (req.file === undefined) return res.send("you must select a file.");
+    res.set('Access-Control-Allow-Origin', '*')
+    if (req.file === undefined) return res.status(400).send("you must select a file.");
     const imgUrl = `http://localhost:8080/file/${req.file.filename}`;
     return res.send(imgUrl);
 });
