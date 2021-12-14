@@ -10,9 +10,7 @@ import upload from '../../assets/upload.png'
 import uploadRed from '../../assets/upload-red.png'
 import uploadGrey from '../../assets/upload-grey.png'
 
-import { formatBytes, useDidUpdateEffect } from '../../helpers'
-import uploadVideo from '../../helpers/uploadVideo'
-import convertVideo from '../../helpers/convertVideo'
+import { blobToFile, formatBytes, useDidUpdateEffect, uploadVideo, convertVideo } from '../../helpers'
 
 interface VideoSelectProps {
     setVideoPath: Dispatch<SetStateAction<string | null>>
@@ -86,7 +84,7 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
             convertVideo(selectedFile)
                 .then((convertedBlob: any) => {
                     setTimeout(() => {
-                        uploadVideo(selectedFile)
+                        uploadVideo(blobToFile(convertedBlob.data, selectedFile.name, selectedFile.size))
                             .then((res: any) => {
                                 console.log('video uploaded', res)
                                 setUploadMessage('Uploaded successfully')
@@ -100,10 +98,8 @@ function VideoSelect({ setVideoPath }: VideoSelectProps): JSX.Element {
                             })
                     }, 2000)
                 })
-
             setVideoPath(selectedFile.webkitRelativePath)
             setIsError(false)
-
         } else {
             setIsError(true)
         }

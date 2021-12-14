@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { API_URL } from '../constants'
 
-const uploadVideo = (video: any): Promise<AxiosResponse<any,any>> => {
+const uploadVideo = (video: File): Promise<AxiosResponse<any,any>> => {
     console.log(video)
     const path = API_URL + 'file/upload'
     let body: FormData = new FormData()
