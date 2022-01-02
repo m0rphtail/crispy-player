@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const connection = require("./db");
 const express = require("express");
 const app = express();
+const cors = require('cors')
 
 let gfs;
 connection();
@@ -16,6 +17,11 @@ conn.once("open", function () {
 });
 
 app.use("/file", upload);
+app.use(cors({
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+}));
 
 // media routes
 app.get("/file/:filename", async (req, res) => {
