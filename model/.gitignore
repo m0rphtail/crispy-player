@@ -1,0 +1,6 @@
+*.ipynb_checkpoints
+__pycache__/
+Dataset_1024/
+Dataset_4096/
+*.npy
+*.tar
