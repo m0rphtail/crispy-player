@@ -2,16 +2,13 @@ let mpvPlayer = require("node-mpv");
 
 let mpv_options = [
   "--title=Crispy-Player",
-  // "--vo=gpu",
-  // "--profile=gpu-hq",
-  "--glsl-shader=glsl_shaders/ak4.glsl",
-  // "--scale=ewa_lanczos",
-  // "--fbo-format=rgba16hf",
+  // "--glsl-shader=glsl_shaders/CrispyShader_Upscale_CNN_x2_VL.glsl",
+  "--glsl-shaders=glsl_shaders/CrispyShader_Clamp_Highlights.glsl:glsl_shaders/CrispyShader_Restore_CNN_VL.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_VL.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x2.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x4.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_M.glsl"
 ];
 
 let mpv = new mpvPlayer({},mpv_options);
 
-console.log("Crispy Player...")
+console.log("Crispy Player running...")
 
 mpv
   .start()
