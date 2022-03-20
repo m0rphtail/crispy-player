@@ -1,4 +1,5 @@
 {
+
   "name": "crispy-player",
   "version": "1.0.0",
   "description": "A video player that performs video super resolution in _realtime_.",
@@ -11,8 +12,8 @@
     "react-router-dom": "^5.3.0",
     "react-router": "^5.2.1",
     "typescript": "^4.4.4",
-    "node-mpv": "^1.5.0"
-  },
+    "node-mpv": "^2.0.0-beta.2"
+  },  
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
