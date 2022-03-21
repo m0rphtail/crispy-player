@@ -1,38 +1,44 @@
 let mpvPlayer = require("node-mpv");
 let mpv_options = [];
 
-if (process.argv[3] == 1) {
-  mpv_options = [
-    "--title=Crispy-Player",
-    "--glsl-shaders=glsl_shaders/CrispyShader_Clamp_Highlights.glsl:glsl_shaders/CrispyShader_Restore_CNN_VL.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_VL.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x2.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x4.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_M.glsl",
-  ];
+if (process.argv[2] == null) {
+  console.log(
+    "Crispy Player v1\n*****************\nUsage: ./crispy <file-path> [mode (default 0)]\n\nuse mode 0 for low-end GPUs (default)\nuse mode 1 for high-end GPUs"
+  );
 } else {
-  mpv_options = [
-    "--title=Crispy-Player",
-    "--glsl-shaders=glsl_shaders/CrispyShader_Clamp_Highlights.glsl:glsl_shaders/CrispyShader_Restore_CNN_M.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_M.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x2.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x4.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_S.glsl",
-  ];
-}
+  if (process.argv[3] == 1) {
+    mpv_options = [
+      "--title=Crispy-Player",
+      "--glsl-shaders=glsl_shaders/CrispyShader_Clamp_Highlights.glsl:glsl_shaders/CrispyShader_Restore_CNN_VL.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_VL.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x2.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x4.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_M.glsl",
+    ];
+  } else {
+    mpv_options = [
+      "--title=Crispy-Player",
+      "--glsl-shaders=glsl_shaders/CrispyShader_Clamp_Highlights.glsl:glsl_shaders/CrispyShader_Restore_CNN_M.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_M.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x2.glsl:glsl_shaders/CrispyShader_AutoDownscalePre_x4.glsl:glsl_shaders/CrispyShader_Upscale_CNN_x2_S.glsl",
+    ];
+  }
 
-let mpv = new mpvPlayer({}, mpv_options);
-console.log("Crispy Player running...");
+  let mpv = new mpvPlayer({}, mpv_options);
+  console.log("Crispy Player running...");
 
-mpv
-  .start()
-  .then(() => {
-    if (process.argv[2] != null) {
-      return mpv.load(process.argv[2]);
-    } else {
-      console.log("Please enter a video file as an argument!");
+  mpv
+    .start()
+    .then(() => {
+      if (process.argv[2] != null) {
+        return mpv.load(process.argv[2]);
+      } else {
+        console.log("Please enter a video file as an argument!");
+        process.exit();
+      }
+    })
+
+    .catch((error) => {
+      console.log(error.verbose);
       process.exit();
-    }
-  })
+    });
 
-  .catch((error) => {
-    console.log(error.verbose);
+  mpv.on("stopped", function () {
+    console.log("Shutting down...");
     process.exit();
   });
-
-mpv.on("stopped", function () {
-  console.log("Shutting down...");
-  process.exit();
-});
+}
