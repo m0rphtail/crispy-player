@@ -21,5 +21,5 @@ gcc -o crispy crispy.c `pkg-config --libs --cflags mpv`
 
 ## run:
 ```
-./cripsy </path/to/file or URL>
+./cripsy </path/to/file> <mode[1 = for highend gpu]>
 ```
