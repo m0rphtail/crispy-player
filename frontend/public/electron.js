@@ -2,7 +2,7 @@ const path = require("path")
 const { app, BrowserWindow } = require("electron")
 const isDev = require("electron-is-dev")
 const { ipcMain } = require('electron')
-const { openInMPV } = require("../../openInMPV")
+// const { openInMPV } = require("../../openInMPV")
 
 let mainWindow = null
 

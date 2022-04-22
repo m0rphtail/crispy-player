@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+html,
+body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+p,
+a,
+li {
+  font-size: 1rem;
+  color: #575757;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-container {
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-container h5 {
+  font-size: 1.2rem;
+  color: #161922;
+  font-weight: 500;
+}
+
+.bottom-container {
+  width: 100%;
+  height: calc(100vh - 70px - 2rem);
+  display: flex;
+  flex-direction: row;
+}
+
+.left-container {
+  height: 100%;
+  width: 60%;
+  background-color: rgb(54, 96, 212);
+  display: flex;
+  border-radius: 6px;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.right-container {
+  width: 40%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-container h3 {
+  font-size: 1.2rem;
+  color: #161922ba;
+  font-weight: 500;
+}
+
+.right-container h2 {
+  font-size: 1.5rem;
+  color: #161922;
+  font-weight: 500;
+}
+
+/* .right-container p.title {
+  font-size: 0.9rem;
+  color: #575757;
+  font-weight: 400;
+  letter-spacing: 0.9px;
+} */
+
+.right-container p.title {
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: rgb(54, 96, 212);
+  padding: 4px 10px;
+  width: fit-content;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+ul {
+  padding-inline-start: 0px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+}
+
+ul li img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
+.github-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+
+.github-card h4 {
+  margin-top: 0;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: white;
+  border-radius: 6px;
+  height: 48px;
+  outline: none;
+  border: none;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: 0.3s ease-out;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+button p {
+  color: rgb(54, 96, 212);
+  font-size: 1rem;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
+  top: 0;
+  transform: translate(-50%, -5px);
+  pointer-events: none;
+}
+
+input {
+  cursor: pointer;
+}
