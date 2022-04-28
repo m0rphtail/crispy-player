@@ -112,6 +112,3 @@ yarn-debug.log*
 yarn-error.log*
 
 release
-core/crispy-linux
-core/crispy-macos
-core/crispy-win.exe
