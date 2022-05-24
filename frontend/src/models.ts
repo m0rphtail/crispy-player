@@ -19,7 +19,7 @@ interface Student extends Person {
     department: Department
 }
 
-interface Teacher extends Person {}
+interface Teacher extends Person { }
 
 export type {
     Student,
